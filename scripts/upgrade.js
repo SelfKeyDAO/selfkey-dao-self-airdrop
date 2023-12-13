@@ -4,7 +4,8 @@ async function main() {
     const [deployer] = await ethers.getSigners();
     console.log("Deploying contracts with the account:", deployer.address);
 
-    const proxyAddress = "0xA0c61F041DD1059fCE6a50D2461De63a0D47017C";
+    // Mumbai addresses
+    const proxyAddress = "0x62880bc85712eE70609BC7e11Bf452475D4e1566";
 
     const contractFactory = await hre.ethers.getContractFactory("SelfkeyDaoVoting");
     const contract = await upgrades.upgradeProxy(proxyAddress, contractFactory);

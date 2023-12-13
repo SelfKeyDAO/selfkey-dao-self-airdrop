@@ -12,6 +12,8 @@ interface ISelfkeyDaoSelfAirdrop {
         uint amount;
     }
 
+    event AuthorizedSignerChanged(address indexed _address);
+
     event AuthorizationContractAddressChanged(address indexed _address);
 
     event AirdropProposalCreated(uint256 proposalId, string title, uint amount, bool active);
@@ -20,7 +22,7 @@ interface ISelfkeyDaoSelfAirdrop {
 
     event Airdrop(uint256 indexed proposalId, address indexed voter, uint256 votes);
 
-    function initialize(address _authorizationContract) external;
+    function initialize(address _authorizationContract, address _authorizedSigner, address _mintableRegistryContract) external;
 
     function setAuthorizationContractAddress(address _newAuthorizationContractAddress) external;
 
@@ -28,7 +30,9 @@ interface ISelfkeyDaoSelfAirdrop {
 
     function updateAirdropProposal(uint256 _proposalId, string memory _title, uint _amount, bool _active) external;
 
-    function airdrop(address _account, bytes32 _param, uint _timestamp, address _signer, bytes memory signature) external;
+    function selfAirdrop(address _account, bytes32 _param, uint _timestamp, address _signer, bytes memory signature) external;
+
+    function airdrop(address _account, uint256 _proposalId, uint _amount) external;
 
     function getAirdropCount(uint256 _proposalId) external view returns (uint256);
 

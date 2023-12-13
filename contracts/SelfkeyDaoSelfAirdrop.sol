@@ -4,12 +4,15 @@ pragma solidity 0.8.19;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "./external/ISelfkeyIdAuthorization.sol";
+import "./external/ISelfkeyMintableRegistry.sol";
 import "./ISelfkeyDaoSelfAirdrop.sol";
 
 contract SelfkeyDaoSelfAirdrop is Initializable, OwnableUpgradeable, ISelfkeyDaoSelfAirdrop {
 
     address public authorizedSigner;
     ISelfkeyIdAuthorization public authorizationContract;
+
+    ISelfkeyMintableRegistry public mintableRegistryContract;
 
     // Mapping to store proposals by ID
     mapping(uint256 => AirdropProposal) public proposals;
@@ -21,14 +24,22 @@ contract SelfkeyDaoSelfAirdrop is Initializable, OwnableUpgradeable, ISelfkeyDao
         _disableInitializers();
     }
 
-    function initialize(address _authorizationContract) public initializer {
+    function initialize(address _authorizationContract, address _authorizedSigner, address _mintableRegistryContract) public initializer {
         __Ownable_init();
         authorizationContract = ISelfkeyIdAuthorization(_authorizationContract);
+        mintableRegistryContract = ISelfkeyMintableRegistry(_mintableRegistryContract);
+        authorizedSigner = _authorizedSigner;
     }
 
     function setAuthorizationContractAddress(address _newAuthorizationContractAddress) public onlyOwner {
         authorizationContract = ISelfkeyIdAuthorization(_newAuthorizationContractAddress);
         emit AuthorizationContractAddressChanged(_newAuthorizationContractAddress);
+    }
+
+    function changeAuthorizedSigner(address _signer) public onlyOwner {
+        require(_signer != address(0), "Invalid authorized signer");
+        authorizedSigner = _signer;
+        emit AuthorizedSignerChanged(_signer);
     }
 
     // Function to create a new proposal
@@ -100,6 +111,9 @@ contract SelfkeyDaoSelfAirdrop is Initializable, OwnableUpgradeable, ISelfkeyDao
 
         // Increment the vote count for the chosen option of the given proposal
         proposals[proposalId].airdropCount = proposals[proposalId].airdropCount + 1;
+
+        // Add to the mintable Registry
+        mintableRegistryContract.register(_account, _amount, 'SELF Airdrop', 2, _signer);
 
         // Emit the VoteCast event
         emit Airdrop(proposalId, _account, _amount);
