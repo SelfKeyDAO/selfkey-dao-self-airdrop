@@ -14,7 +14,7 @@ All smart contracts are implemented in Solidity `^0.8.19`, using [Hardhat](https
 
 ### Initialization
 
-    npm install
+    yarn
 
 ### Testing
 
