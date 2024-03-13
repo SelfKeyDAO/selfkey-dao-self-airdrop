@@ -1,0 +1,189 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0xf6950c309421C13dF9997E77E79622696fC33431",
+    "txHash": "0x7ab5e1c736ae0ee031d4f18b8376a491301d0b8b4b38d6a2d8904ef26421b611"
+  },
+  "proxies": [
+    {
+      "address": "0xc5cC94C123780482FCD8dC18F06028Ae4de224c6",
+      "txHash": "0x2bd6452be5edc22fa57d5bf38d12f315c30f3789fdad31db0c6cd47a7b6d3851",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "e7eb68ad61cc023ecb3b498ab998aae8c2e6982afee87ae45ab4af151d523db8": {
+      "address": "0x769D230017Da8C67f5f210b80731bbe1d95dFFA1",
+      "txHash": "0xd02986bed607d57e135f0205ef0c0d56457cc69dd56427733e6da9817a095984",
+      "layout": {
+        "solcVersion": "0.8.19",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:40"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "authorizedSigner",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_address",
+            "contract": "SelfkeyDaoSelfAirdrop",
+            "src": "contracts/SelfkeyDaoSelfAirdrop.sol:12"
+          },
+          {
+            "label": "authorizationContract",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_contract(ISelfkeyIdAuthorization)1337",
+            "contract": "SelfkeyDaoSelfAirdrop",
+            "src": "contracts/SelfkeyDaoSelfAirdrop.sol:13"
+          },
+          {
+            "label": "mintableRegistryContract",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_contract(ISelfkeyMintableRegistry)1437",
+            "contract": "SelfkeyDaoSelfAirdrop",
+            "src": "contracts/SelfkeyDaoSelfAirdrop.sol:15"
+          },
+          {
+            "label": "proposals",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_mapping(t_uint256,t_struct(AirdropProposal)697_storage)",
+            "contract": "SelfkeyDaoSelfAirdrop",
+            "src": "contracts/SelfkeyDaoSelfAirdrop.sol:18"
+          },
+          {
+            "label": "numProposals",
+            "offset": 0,
+            "slot": "105",
+            "type": "t_uint256",
+            "contract": "SelfkeyDaoSelfAirdrop",
+            "src": "contracts/SelfkeyDaoSelfAirdrop.sol:20"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(ISelfkeyIdAuthorization)1337": {
+            "label": "contract ISelfkeyIdAuthorization",
+            "numberOfBytes": "20"
+          },
+          "t_contract(ISelfkeyMintableRegistry)1437": {
+            "label": "contract ISelfkeyMintableRegistry",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(AirdropProposal)697_storage)": {
+            "label": "mapping(uint256 => struct ISelfkeyDaoSelfAirdrop.AirdropProposal)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(AirdropProposal)697_storage": {
+            "label": "struct ISelfkeyDaoSelfAirdrop.AirdropProposal",
+            "members": [
+              {
+                "label": "title",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "received",
+                "type": "t_mapping(t_address,t_bool)",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "airdropCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "active",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "amount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              }
+            ],
+            "numberOfBytes": "160"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        },
+        "namespaces": {}
+      }
+    }
+  }
+}
